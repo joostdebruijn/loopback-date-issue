@@ -1,0 +1,49 @@
+{
+  "name": "Note",
+  "properties": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "content": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {
+    "updateDatesInBulk": {
+      "accepts": [
+        {
+          "arg": "dates",
+          "type": "array",
+          "required": true,
+          "description": "A list with objects containing the id and the date-property of notes.",
+          "http": {
+            "source": "body"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "updatedNotes",
+          "type": ["Note"],
+          "root": true,
+          "description": "An array containing the updated notes."
+        }
+      ],
+      "description": "Saves the schedule for one or more notes.",
+      "http": [
+        {
+          "path": "/updateDatesInBulk",
+          "verb": "post"
+        }
+      ]
+    }
+  }
+}
